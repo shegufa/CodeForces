@@ -1,0 +1,41 @@
+Link to the problem: https://codeforces.com/contest/849/problem/B
+
+Cartesian points, parallelism .. The solution needs the help of gradient of course. 
+Gradient of a line , m , passing through (x1,y1) and (x2,y2) is (y2-y1)/(x2-x1)
+
+so, m = (y2-y1)/(x2-x1)
+
+/* maybe it's a problem of codeblocks that , sometimes m = (y2-y1)/(x2-x1) gives wrong answer. break the line in two parts.
+   m = (y2-y1);
+   m = m/(x2-x1);
+
+silly i know but it actually creates problem sometimes in codeblocks. */
+
+and two lines are parallel if their gradients are same.
+
+
+
+okay. now the concept..
+
+We have to find exactly two  discrete parallel lines which cover all the points combined together.. If we can find such pair of parallel lines,
+we have to print "Yes" , else "No".
+
+Now, if we think, one of the lines will go through at least points EITHER  (1,y1) and (2,y2)  OR (1,y1) and (3,y3) OR (2,y2) and (3,y3). Because
+from point 1,2,3 each three of them cannot situate on different lines as we have to have two lines. so at least two of them will situate on one line.
+
+Okay , on basis of this concept, as "n" is only 1000, so we have no problem with complexity O(n), even O(n*n) will not create any problem in shaa Allah :)
+
+
+1. Firstly, we have to calculate m12, m13, m23 ; gradients of the lines passing through i) point 1 and 2, ii) point 1 and 3, iii) point 2 and 3 respectively.
+
+2. For each option above, we have to check all points (1 to n) if they  can be situated on the same line as the two of them. (for this we have to check the 
+gradient of any point i with respect to any point which is already on the line(say, point 1 in option 1). After we have checked all the points which are on 
+same line , we have to check if there are any other points remaining. if there are no other points, then answer is "No" , because we need two lines, not one.
+If there are points remaining, we have to check whether all the remaining points can build a line which must be parallel to the first one, i.e. gradient has 
+to be same as before. 
+If for any of the three options, we can finish the two steps perfectly covering all points and thus creating two parallel lines, answer is "Yes", else "No".
+
+:)
+
+
+Allah Hafiz. :)
